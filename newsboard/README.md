@@ -1,4 +1,4 @@
-# Text analyzer
+# Newsboard
 Web-application with list of news.
 
 # To start:
