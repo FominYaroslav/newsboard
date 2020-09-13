@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  web:
+    build: ./newsboard
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - 8000:8000
+    depends_on:
+      - database
+    env_file:
+      - ./.env.dev
+  database:
+    image: 'postgres:12.4'
+    ports:
+      - '5432:5432'
+    environment:
+      - 'POSTGRES_USER=USER'
+      - 'POSTGRES_PASSWORD=PASSWORD'
+      - 'POSTGRES_DB=news'
+
